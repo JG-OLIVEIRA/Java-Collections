@@ -6,6 +6,9 @@ public class Aluno {
 	private int numeroDeMatricula;
 	
 	public Aluno(String nome, int numeroDeMatricula) {
+		if(nome == null) {
+			throw new NullPointerException("O nome não pode ser nulo.");
+		}
 		this.nome = nome;
 		this.numeroDeMatricula = numeroDeMatricula;
 	}
@@ -16,6 +19,17 @@ public class Aluno {
 
 	public int getNumeroDeMatricula() {
 		return numeroDeMatricula;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Aluno outro = (Aluno) obj;
+		return this.nome.equals(outro.nome);
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.nome.hashCode();
 	}
 	
 	@Override
